@@ -25,7 +25,7 @@ import kotlin.random.Random
 
 
 class MainActivity : ComponentActivity() {
-    
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContent {
@@ -44,18 +44,15 @@ fun PantallaPrincipal() {
     //Crea una variable que se llama numero
     //remember hace que Composable recuerde el valor entre composiciones
     //mutableStateOf(0) indica que el valor puede cambiar y cuando lo hace, la interfaz se redibuja
-    
+
     var numero by remember {
-        mutableIntStateOf(0) 
+        mutableIntStateOf(0)
     } //varibale de estado
-
     VistaNumeroAleatorio(
-
         numero = numero,
         cuandoHagoClick = { //La acción que llamo cuando hago click
             numero = generarNumeroAleatorio()
         }
-
     )
 }
 
@@ -84,3 +81,18 @@ fun VistaNumeroAleatorio(
         }
     }
 }
+
+/**
+ * se llama a generar numero aleatorio
+ * se obtiene un nuevo numero
+ * ese numero se gurda en numero
+ * como numero es estado, compose recompone la interzaf en cada click
+ * y text se actualiza dinámicamente
+ * 
+ * generarNumeroAleatorio --> Contiene la logica
+ * PantallaNumeroAleatorio() --> Maneja el estado
+ * VistaNumeroAleatorio() --> Muiestra la interfaz
+ * 
+ * Tenemos una función que genera el número, una función que guarda el estado actual (es decir, el nuevo valor), y
+ * una función que lo dibuja. Cuando el usuario toca el botón, cambia el estado y Compose lo redibuja en la interfaz con el nuevo valor.
+ */
